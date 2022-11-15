@@ -162,7 +162,22 @@ def readFile(FN):
     fptr.close()
     return readEPs
 
+def findTabs(FN):
+    fptr = open(FN, "r")
+    currLine = fptr.readline()
+    lineNo = 0
+    while currLine:
+        lineNo+=1
+        for i in currLine:
+            if i == "\t":
+                print("tab found on line",lineNo)
 
+
+        currLine = fptr.readline()
+
+
+    print("done reading")
+    fptr.close()
 
 #Name: getFileName
 #Role: ask the user for the file name.
@@ -192,12 +207,15 @@ def writeEPs(readEPs, WFN):
     print("finished writing!")
 
 
+
 if __name__ == "__main__":
     # FN = getFileName()
     RFN = "vehicleInspection.raml"
     WFN = "output.csv"
-    readEPs = readFile(RFN)
-    writeEPs(readEPs, WFN)
+    #readEPs = readFile(RFN)
+    #writeEPs(readEPs, WFN)
+    findTabs("testfile.raml")
+
     # getAttributes(readEPs[0])
     # print(readEPs[0].__dict__.keys())
     # print(readEPs[0].__dict__.values())
